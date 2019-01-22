@@ -1,9 +1,9 @@
 package com.demo.bankapp.entity;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -26,4 +26,7 @@ public class Transaction {
 
     @Column(nullable = false)
     private Long amount;
+
+    @Column(nullable = false)
+    private Date date;
 }

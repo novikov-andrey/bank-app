@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class TransferOperationRequest {
+public class TransferMoneyRequest {
     @NotNull
     private Long senderId;
     @NotNull
