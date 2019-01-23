@@ -45,7 +45,7 @@ public class BankOperationController {
     }
 
 
-    @PostMapping(value = "transfer")
+    @PostMapping(value = "/transfer")
     public BankOperationResponse transferMoney(@RequestBody @Valid TransferMoneyRequest request) {
         try {
             bankOperationService.transferMoney(request.getSenderId(), request.getReceiverId(), request.getAmount());
