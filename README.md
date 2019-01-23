@@ -9,12 +9,24 @@
 
 ### **Реализация**
 
+Исполняемый файл находится в директории app.
+
 Application URL: http://localhost:8080/api/money \
 In-Memory DB: http://localhost:8080/h2
+- database: bank-db
+- username: user
+- password:
+
+По умолчанию при старте приложения добавляются следующие счета:
+```sql
+insert into bank_account(id, owner, balance) values (1, 'Alex', 300000);
+insert into bank_account(id, owner, balance) values (2, 'Sam', 10000);
+insert into bank_account(id, owner, balance) values (3, 'Alice', 3000000);
+```
 
 **Методы:**
 1. Положить деньги на счёт.\
-POST: /put
+POST: /deposit
 
 Пример запроса:
 ```json
@@ -25,7 +37,7 @@ POST: /put
 ```
 
 2. Снять деньги со счёта.\
-POST: /withdraw
+POST: /withdrawal
 
 Пример запроса:
  ```json
@@ -55,6 +67,6 @@ POST: /transfer
 
 **Комментарии по реализации:** 
 
-Для избежания многопоточных проблем:
-- При получении счёта по id используется лок: ``` @Lock(LockModeType.PESSIMISTIC_WRITE) ```
+Во избежание многопоточных проблем:
+- При получении счёта по id используется лок: ``` @Lock(LockModeType.PESSIMISTIC_WRITE) ```.
 - При переводе средст с одного счёта на другой счета достаются из БД в порядке возрастания id.

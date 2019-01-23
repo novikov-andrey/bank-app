@@ -20,7 +20,7 @@ public class BankOperationController {
     @Autowired
     private BankOperationService bankOperationService;
 
-    @PostMapping(value = "/put")
+    @PostMapping(value = "/deposit")
     public BankOperationResponse putMoney(@RequestBody @Valid AccountOperationRequest request) {
         try {
             bankOperationService.putMoney(request.getAccountId(), request.getAmount());
@@ -32,7 +32,7 @@ public class BankOperationController {
         }
     }
 
-    @PostMapping(value = "/withdraw")
+    @PostMapping(value = "/withdrawal")
     public BankOperationResponse withdrawMoney(@RequestBody @Valid AccountOperationRequest request) {
         try {
             bankOperationService.withdrawMoney(request.getAccountId(), request.getAmount());
